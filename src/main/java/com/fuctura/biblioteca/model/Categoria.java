@@ -1,14 +1,16 @@
 package com.fuctura.biblioteca.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Categoria {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
     private String descricao;
-
+    @OneToMany(mappedBy = "categoria")
     private List<Livro> livros = new ArrayList<>();
 
     public Categoria(){
